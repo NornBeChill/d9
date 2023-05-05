@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src=
+"https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.6.4/math.js"
+        integrity=
+></script>
+
+</head>
+  
+<body>
+    <table id="calcu" class="table-auto text-2xl font-bold pt-20 pr-30 border-none rounded border-2 border-black">
+        <tr>
+            <td colspan="3"><input type="text" id="result"></td>
+            <td><input type="button" class="w-full pt-20 pr-40 bg-green-700 text-white text-2xl font-bold border-none rounded" value="c" onclick="clr()" /> </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="button" class="w-full pt-20 pr-40 bg-green-700 text-white text-2xl font-bold border-none rounded" value="1" onclick="dis('1')" 
+                        onkeydown="myFunction(event)"> 
+                    </td>
+            <td><input type="button" class="w-full pt-20 pr-40 bg-green-700 text-white text-2xl font-bold border-none rounded" value="2" onclick="dis('2')" 
+                        onkeydown="myFunction(event)"> </td>
+            <td><input type="button" class="w-full pt-20 pr-40 bg-green-700 text-white text-2xl font-bold border-none rounded" value="3" onclick="dis('3')" 
+                        onkeydown="myFunction(event)"> </td>
+            <td><input type="button" class="w-full pt-20 pr-40 bg-green-700 text-white text-2xl font-bold border-none rounded" value="/" onclick="dis('/')" 
+                        onkeydown="myFunction(event)"> </td>
+        </tr>
+        <tr>
+            <td><input type="button" class="w-full pt-20 pr-40 bg-green-700 text-white text-2xl font-bold border-none rounded" value="4" onclick="dis('4')" 
+                        onkeydown="myFunction(event)"> </td>
+            <td><input type="button" class="w-full pt-20 pr-40 bg-green-700 text-white text-2xl font-bold border-none rounded" value="5" onclick="dis('5')" 
+                        onkeydown="myFunction(event)"> </td>
+            <td><input type="button" class="w-full pt-20 pr-40 bg-green-700 text-white text-2xl font-bold border-none rounded" value="6" onclick="dis('6')" 
+                        onkeydown="myFunction(event)"> </td>
+            <td><input type="button" class="w-full pt-20 pr-40 bg-green-700 text-white text-2xl font-bold border-none rounded" value="*" onclick="dis('*')" 
+                        onkeydown="myFunction(event)"> </td>
+        </tr>
+        <tr>
+            <td><input type="button" class="w-full pt-20 pr-40 bg-green-700 text-white text-2xl font-bold border-none rounded" value="7" onclick="dis('7')" 
+                        onkeydown="myFunction(event)"> </td>
+            <td><input type="button" class="w-full pt-20 pr-40 bg-green-700 text-white text-2xl font-bold border-none rounded" value="8" onclick="dis('8')" 
+                        onkeydown="myFunction(event)"> </td>
+            <td><input type="button" class="w-full pt-20 pr-40 bg-green-700 text-white text-2xl font-bold border-none rounded" value="9" onclick="dis('9')" 
+                        onkeydown="myFunction(event)"> </td>
+            <td><input type="button" class="w-full pt-20 pr-40 bg-green-700 text-white text-2xl font-bold border-none rounded" value="-" onclick="dis('-')"
+                        onkeydown="myFunction(event)"> </td>
+        </tr>
+        <tr>
+            <td><input type="button" class="w-full pt-20 pr-40 bg-green-700 text-white text-2xl font-bold border-none rounded" value="0" onclick="dis('0')" 
+                        onkeydown="myFunction(event)"> </td>
+            <td><input type="button" class="w-full pt-20 pr-40 bg-green-700 text-white text-2xl font-bold border-none rounded" value="." onclick="dis('.')" 
+                        onkeydown="myFunction(event)"> </td>
+            <td><input type="button" class="w-full pt-20 pr-40 bg-green-700 text-white text-2xl font-bold border-none rounded" value="=" onclick="solve()"> </td>
+  
+            <td><input type="button" class="w-full pt-20 pr-40 bg-green-700 text-white text-2xl font-bold border-none rounded" value="+" onclick="dis('+')" 
+                        onkeydown="myFunction(event)"> </td>
+        </tr>
+    </table>
+    <script>
+        function dis(val) {
+            document.getElementById("result").value += val
+        }
+  
+        function myFunction(event) {
+            if (event.key == '0' || event.key == '1' 
+                || event.key == '2' || event.key == '3'
+                || event.key == '4' || event.key == '5' 
+                || event.key == '6' || event.key == '7'
+                || event.key == '8' || event.key == '9' 
+                || event.key == '+' || event.key == '-'
+                || event.key == '*' || event.key == '/')
+                document.getElementById("result").value += event.key;
+        }
+  
+        var cal = document.getElementById("calcu");
+        cal.onkeyup = function (event) {
+            if (event.keyCode === 13) {
+                console.log("Enter");
+                let x = document.getElementById("result").value
+                console.log(x);
+                solve();
+            }
+        }
+  
+        function solve() {
+            let x = document.getElementById("result").value
+            let y = math.evaluate(x)
+            document.getElementById("result").value = y
+        }
+  
+        function clr() {
+            document.getElementById("result").value = ""
+        }
+    </script>
+    
+</body>
+  
+</html>   
